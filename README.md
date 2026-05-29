@@ -1,3 +1,13 @@
+> CONFIGURAR PROJETO
+
+- git clone
+- composer install
+- cp .env.example .env
+- php artisan key:generate
+- configurar banco (.ENV)
+- php artisan migrate
+- php artisan serve
+
 > DESCRIÇÃO GERAL:
 
 > 06 - Desenvolva um sistema para locação de livros. 
@@ -34,7 +44,13 @@ Páginas para listar, cadastrar, editar e visualizar dados.
 
 Páginas específicas para os relatórios, conforme exigido no seu tema.
 
+> Relatório Obrigatório:
+
+Livros emprestados por leitor: listar todos os livros que um leitor já alugou 
+ou está alugando. 
+
 > Orientações Importantes
+
 A aceitação do trabalho está condicionada a uma banca de até 5 perguntas, feitas pelo professor, destinadas a confirmar se o aluno compreende profundamente o funcionamento do código entregue e se é realmente o autor da solução apresentada.
 
 O uso de ferramentas de Inteligência Artificial é permitido, porém:
@@ -46,3 +62,5 @@ O aluno deve entender totalmente o código que está entregando.
 O uso de IA para gerar código que o aluno não é capaz de explicar poderá resultar na reprovação do trabalho (nota zero).
 
 O projeto deve rodar sem erros e estar devidamente organizado. Nomes de tabelas, modelos e relacionamentos devem seguir a ementa do seu tema.
+
+
