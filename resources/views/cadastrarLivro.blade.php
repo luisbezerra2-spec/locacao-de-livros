@@ -31,10 +31,13 @@
                                 <a class="nav-link active" aria-current="page" href="{{ route('cadastrarLivro') }}">Livros</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('cadastrarDisciplina') }}">Leitores</a>
+                                <a class="nav-link" href="{{ route('cadastrarLeitor') }}">Leitores</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('verRelatorio') }}">Locações</a>
+                                <a class="nav-link" href="/">Locações</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('verRelatorio') }}">Relatorio</a>
                             </li>
 
 
@@ -61,18 +64,23 @@
                                     <input type="text" name="titulo" class="form-control" required id="titulo">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nome" class="form-label">Autor</label>
+                                    <label for="autor" class="form-label">Autor</label>
                                     <input type="text" name="autor" class="form-control" required id="autor">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="departamento" class="form-label">Categoria</label>
+                                    <label for="categoria" class="form-label">Categoria</label>
                                     <input type="text" name="categoria" required class="form-control" id="categoria">
                                 </div>
-                                <select name="status">
-                                    <option value="disponivel">Disponível</option>
-                                    <option value="alugado">Alugado</option>
-                                </select>
+
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select id="status" name="status" class="form-select">
+                                        <option value="disponivel">Disponível</option>
+                                        <option value="alugado">Alugado</option>
+                                    </select>
+                                </div>
+
 
                                 <button type="submit" class="btn btn-success">Salvar</button>
                             </form>
