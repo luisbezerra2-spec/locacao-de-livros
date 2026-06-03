@@ -11,7 +11,7 @@ class LivroController extends Controller
     // Mostra o 'Form' em 'cadastrarLivro.blade.php'
     public function cadastrarLivro()
     {
-        return view('cadastrarLivro');
+        return view('livro/cadastrarLivro');
     }
 
     // Colocado no 'Action' do 'Form' de 'cadastrarLivro' - retorna para pagina de cadastro.
@@ -29,6 +29,8 @@ class LivroController extends Controller
 
     public function mostrarLivro(){
         $livros = Livro::all();
-        return view('listarLivro', compact('livros'));
+        return view('livro/listarLivro', compact('livros'));
     }
+
+ 
 }
