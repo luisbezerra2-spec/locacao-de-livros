@@ -5,8 +5,17 @@ import {
     FileText,
     AlertTriangle
 } from 'lucide-vue-next'
+import { Link } from '@inertiajs/vue3'
+
+
+import AppLayout from '@/Layouts/AppLayout.vue'
+
+defineOptions({
+layout: AppLayout
+})
 </script>
-    
+
+
 <template>
     <div class="space-y-6">
 
@@ -100,117 +109,99 @@ import {
 
 
 
- <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-6">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-6">
 
-        <!-- Gráfico -->
-        <div
-            class="xl:col-span-2 bg-white rounded-xl border border-gray-200 shadow-sm p-6"
-        >
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-lg font-semibold text-gray-800">
-                    Locações por mês
+            <!-- Gráfico -->
+            <div class="xl:col-span-2 bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-semibold text-gray-800">
+                        Locações por mês
+                    </h2>
+
+                    <span class="text-sm text-gray-500">
+                        Ano atual
+                    </span>
+                </div>
+
+                <!-- Seu gráfico entra aqui -->
+                <div class="h-80 flex items-center justify-center text-gray-400">
+                    Área do gráfico
+                </div>
+
+            </div>
+
+            <!-- Atalhos -->
+            <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-6">
+                    Ações rápidas
                 </h2>
 
-                <span
-                    class="text-sm text-gray-500"
-                >
-                    Ano atual
-                </span>
-            </div>
+                <div class="space-y-4">
 
-            <!-- Seu gráfico entra aqui -->
-            <div class="h-80 flex items-center justify-center text-gray-400">
-                Área do gráfico
-            </div>
+                    <Link href="/cadastrarLivro"
+                        class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
+                            <BookOpen class="w-6 h-6 text-blue-600" />
+                        </div>
 
-        </div>
+                        <div>
+                            <p class="font-medium">
+                                Novo Livro
+                            </p>
 
-        <!-- Atalhos -->
-        <div
-            class="bg-white rounded-xl border border-gray-200 shadow-sm p-6"
-        >
-            <h2 class="text-lg font-semibold text-gray-800 mb-6">
-                Ações rápidas
-            </h2>
+                            <p class="text-sm text-gray-500">
+                                Cadastrar livro
+                            </p>
+                        </div>
 
-            <div class="space-y-4">
+                        <Plus class="ml-auto w-5 h-5 text-gray-400" />
+                    </Link>
 
-                <a
-                    href="/livros/create"
-                    class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all"
-                >
-                    <div
-                        class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center"
-                    >
-                        <BookOpen class="w-6 h-6 text-blue-600" />
-                    </div>
+                    <Link href="/leitores/create"
+                        class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-green-500 hover:bg-green-50 transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center">
+                            <Users class="w-6 h-6 text-green-600" />
+                        </div>
 
-                    <div>
-                        <p class="font-medium">
-                            Novo Livro
-                        </p>
+                        <div>
+                            <p class="font-medium">
+                                Novo Leitor
+                            </p>
 
-                        <p class="text-sm text-gray-500">
-                            Cadastrar livro
-                        </p>
-                    </div>
+                            <p class="text-sm text-gray-500">
+                                Cadastrar leitor
+                            </p>
+                        </div>
 
-                    <Plus class="ml-auto w-5 h-5 text-gray-400" />
-                </a>
+                        <Plus class="ml-auto w-5 h-5 text-gray-400" />
+                    </Link>
 
-                <a
-                    href="/leitores/create"
-                    class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-green-500 hover:bg-green-50 transition-all"
-                >
-                    <div
-                        class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center"
-                    >
-                        <Users class="w-6 h-6 text-green-600" />
-                    </div>
+                    <Link href="/locacoes/create"
+                        class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-purple-500 hover:bg-purple-50 transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center">
+                            <FileText class="w-6 h-6 text-purple-600" />
+                        </div>
 
-                    <div>
-                        <p class="font-medium">
-                            Novo Leitor
-                        </p>
+                        <div>
+                            <p class="font-medium">
+                                Nova Locação
+                            </p>
 
-                        <p class="text-sm text-gray-500">
-                            Cadastrar leitor
-                        </p>
-                    </div>
+                            <p class="text-sm text-gray-500">
+                                Registrar empréstimo
+                            </p>
+                        </div>
 
-                    <Plus class="ml-auto w-5 h-5 text-gray-400" />
-                </a>
+                        <Plus class="ml-auto w-5 h-5 text-gray-400" />
+                    </Link>
 
-                <a
-                    href="/locacoes/create"
-                    class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-purple-500 hover:bg-purple-50 transition-all"
-                >
-                    <div
-                        class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center"
-                    >
-                        <FileText class="w-6 h-6 text-purple-600" />
-                    </div>
-
-                    <div>
-                        <p class="font-medium">
-                            Nova Locação
-                        </p>
-
-                        <p class="text-sm text-gray-500">
-                            Registrar empréstimo
-                        </p>
-                    </div>
-
-                    <Plus class="ml-auto w-5 h-5 text-gray-400" />
-                </a>
+                </div>
 
             </div>
 
         </div>
 
-    </div>
 
-        
         <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
 
             <!-- Locações Recentes -->
