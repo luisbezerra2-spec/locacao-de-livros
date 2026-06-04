@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\DisciplinaController;
 use App\Http\Controllers\RelatorioController;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return view('cadastrarDocente');
+    return Inertia::render('Dashboard');
 });
 
 Route::get('cadastrar',[DocenteController::class, 'cadastrarDocente'])->name('cadastrarDocente');
