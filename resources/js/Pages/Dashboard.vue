@@ -135,7 +135,7 @@ import {
 
             <div class="space-y-4">
 
-                <Link
+                <a
                     href="/livros/create"
                     class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all"
                 >
@@ -156,9 +156,9 @@ import {
                     </div>
 
                     <Plus class="ml-auto w-5 h-5 text-gray-400" />
-                </Link>
+                </a>
 
-                <Link
+                <a
                     href="/leitores/create"
                     class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-green-500 hover:bg-green-50 transition-all"
                 >
@@ -179,9 +179,9 @@ import {
                     </div>
 
                     <Plus class="ml-auto w-5 h-5 text-gray-400" />
-                </Link>
+                </a>
 
-                <Link
+                <a
                     href="/locacoes/create"
                     class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-purple-500 hover:bg-purple-50 transition-all"
                 >
@@ -202,7 +202,7 @@ import {
                     </div>
 
                     <Plus class="ml-auto w-5 h-5 text-gray-400" />
-                </Link>
+                </a>
 
             </div>
 
