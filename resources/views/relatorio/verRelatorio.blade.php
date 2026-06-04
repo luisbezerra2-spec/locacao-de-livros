@@ -26,12 +26,6 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('cadastrarDocente') }}">Professor</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cadastrarDisciplina') }}">Disciplina</a>
-                            </li>
-                            <li class="nav-item">
                             <a class="nav-link" href="{{ route('verRelatorio') }}">Relatorio</a>
                             </li>
                             
@@ -47,7 +41,7 @@
             <div class="offset-2 col-8">
                 <div class="card">
                     <div class="card-header" style="background-color:#215428;color:#ffffff">
-                        Listar Disciplinas
+                        Listar Livros
                     </div>
                     <div class="card-body">
                         <div class="offset-2 col-8">
