@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\Livro;
+use App\Models\Locacao;
 
 class LocacaoController extends Controller
 {
+
+    public function mostrarLocacao()
+    {
+        // carregar relacionamentos...
+        $locacoes = Locacao::with(['livro','leitor'])->get();
+
+        return Inertia::render('Locacao/ListarLocacao', ['locacoes' => $locacoes]);
+    }
+
     // Antes de criar a locacao, verificar o status de livro - se nao estiver disponivel, retornar erro e, ao criar a locação, mudar status para alugado. Ao finalizar a locação, mudar status para disponivel.
     public function cadastrarLocacao()
     {
@@ -15,31 +26,57 @@ class LocacaoController extends Controller
 
     public function salvarLocacao(Request $request)
     {
-        // Recuperar o livro selecionado para locação
-        $livro = Livro::find($request->livro_id);
+        $dadosValidados = $request->validate([
+            'livro_id' => 'required',
+            'leitor_id' => 'required'
+        ]);
 
-        // Verificar Status do Livro - Se não estiver disponível, retornar erro
-        if ($request->livro_status !== 'disponivel') {
-            return redirect('cadastrarLocacao')->with('error', 'O livro selecionado não está disponível para locação.');
+        // Recuperar livro
+        $livro = Livro::findOrFail($request->livro_id);
+
+        // Verificar disponibilidade REAL
+        if ($livro->status !== 'disponivel') {
+
+            return redirect()
+                ->route('cadastrarLocacao')
+                ->with('error', 'Livro indisponível.');
         }
 
-        // Mudar o status do livro para "alugado" e salvar a locação
+        // Criar locação
+        Locacao::create([
+            'livro_id' => $request->livro_id,
+            'leitor_id' => $request->leitor_id,
+            'data_retirada' => now(),
+            'data_devolucao' => null
+        ]);
+
+        // Atualizar status do livro
         $livro->status = 'alugado';
         $livro->save();
 
-        return redirect('cadastrarLocacao')->with('success', 'Locação cadastrada com sucesso!');
+        return redirect()
+            ->route('listarLocacao')
+            ->with('success', 'Locação cadastrada com sucesso!');
     }
 
-    // ao devolver o livro, mudar status para disponivel
-    public function finalizarLocacao(Request $request)
+    public function finalizarLocacao($id)
     {
-        // Recuperar o livro selecionado para devolução
-        $livro = Livro::find($request->livro_id);
+        // Recuperar locação
+        $locacao = Locacao::findOrFail($id);
 
-        // Mudar o status do livro para "disponível" e salvar a devolução
+        // Recuperar livro relacionado
+        $livro = $locacao->livro;
+
+        // Registrar devolução
+        $locacao->data_devolucao = now();
+        $locacao->save();
+
+        // Atualizar status livro
         $livro->status = 'disponivel';
         $livro->save();
 
-        return redirect('cadastrarLocacao')->with('success', 'Locação finalizada com sucesso!');
+        return redirect()
+            ->route('listarLocacao')
+            ->with('success', 'Locação finalizada com sucesso!');
     }
 }

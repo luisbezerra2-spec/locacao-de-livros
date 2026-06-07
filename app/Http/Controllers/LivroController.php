@@ -25,14 +25,54 @@ class LivroController extends Controller
         $livro->status = $request->status;
         $livro->save();
 
-        return redirect('cadastrarLivro')->with('success', 'Livro cadastrado com sucesso!');
+        return redirect()->route('listarLivro')->with('success', 'Livro cadastrado com sucesso!');
     }
 
     public function mostrarLivro()
     {
         $livros = Livro::all();
-        return Inertia::render('Livro/ListarLivro', [
-            'livros' => $livros
+        return Inertia::render('Livro/ListarLivro', ['livros' => $livros]);
+    }
+
+    public function editarLivro($id)
+    {
+        $livro = Livro::findOrFail($id);
+
+        return Inertia::render('Livro/EditarLivro', ['livro' => $livro]);
+    }
+
+    public function atualizarLivro(Request $request, $id)
+    {
+        $dadosValidados = $request->validate([
+            'titulo' => 'required',
+            'autor' => 'required',
+            'categoria' => 'required',
+            'status' => 'required'
         ]);
+
+        $livro = Livro::findOrFail($id);
+
+        $livro->update($dadosValidados);
+
+        return redirect()
+            ->route('listarLivro')
+            ->with('success', 'Livro cadastrado com sucesso!');
+    }
+
+    public function deletarLivro($id)
+    {
+        $livro = Livro::findOrFail($id);
+
+        if ($livro->locacoes()->exists()) {
+            return redirect()
+                ->route('listarLivro')
+                ->with('error', 'Livro possui histórico de locações');
+        }
+
+        $livro->delete();
+
+        return redirect()
+            ->route('listarLivro')
+            ->with('erro', 'Livro excluído com sucesso!');
     }
 }
