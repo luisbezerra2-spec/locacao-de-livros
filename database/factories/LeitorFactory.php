@@ -10,15 +10,17 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class LeitorFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+
+            'nome' => fake()->name(),
+
+            'documento' => fake()->numerify('###########'),
+
+            'endereco' => fake()->address()
+
         ];
     }
 }
+

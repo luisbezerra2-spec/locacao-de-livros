@@ -55,11 +55,10 @@ class LocacaoController extends Controller
             'data_retirada' => now(),
             'data_devolucao' => null
         ]);
-        /*  dd($locacao); */
         // Atualizar status do livro
         $livro->status = 'Alugado';
         $livro->save();
-        dd($livro->fresh());
+        
         return redirect()
             ->route('listarLocacao')
             ->with('success', 'Locação cadastrada com sucesso!');

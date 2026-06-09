@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Locacao;
+use App\Models\Livro;
+use App\Models\Leitor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,15 +12,18 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class LocacaoFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+
+            'livro_id' => Livro::factory(),
+
+            'leitor_id' => Leitor::factory(),
+
+            'data_retirada' => now(),
+
+            'data_devolucao' => null
+
         ];
     }
 }
