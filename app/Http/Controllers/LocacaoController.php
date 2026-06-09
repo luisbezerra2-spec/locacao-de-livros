@@ -40,10 +40,6 @@ class LocacaoController extends Controller
 
     public function salvarLocacao(Request $request)
     {
-        /*   dd([
-              'request' => $request->all(),
-              'livro' => Livro::find($request->livro_id)
-          ]); */
         $dadosValidados = $request->validate([
             'leitor_id' => 'required',
             'livro_id' => 'required',
@@ -61,17 +57,17 @@ class LocacaoController extends Controller
         }
 
         // Criar locação
-        $locacao = Locacao::create([
+        Locacao::create([
             'leitor_id' => $request->leitor_id,
             'livro_id' => $request->livro_id,
             'data_retirada' => now(),
             'data_devolucao' => null
         ]);
-        /*  dd($locacao); */
+   
         // Atualizar status do livro
         $livro->status = 'Alugado';
         $livro->save();
-        dd($livro->fresh());
+       
         return redirect()
             ->route('listarLocacao')
             ->with('success', 'Locação cadastrada com sucesso!');
