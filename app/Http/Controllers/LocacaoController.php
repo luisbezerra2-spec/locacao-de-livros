@@ -6,14 +6,15 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\Livro;
 use App\Models\Locacao;
+use App\Models\Leitor;
 
 class LocacaoController extends Controller
 {
 
     public function mostrarLocacao()
     {
-        // carregar relacionamentos...
-        $locacoes = Locacao::with(['livro','leitor'])->get();
+        // carregar relacionamentos
+        $locacoes = Locacao::with(['livro', 'leitor'])->get();
 
         return Inertia::render('Locacao/ListarLocacao', ['locacoes' => $locacoes]);
     }
@@ -21,7 +22,20 @@ class LocacaoController extends Controller
     // Antes de criar a locacao, verificar o status de livro - se nao estiver disponivel, retornar erro e, ao criar a locação, mudar status para alugado. Ao finalizar a locação, mudar status para disponivel.
     public function cadastrarLocacao()
     {
-        return view('locacao/cadastrarLocacao');
+        $livros = Livro::where(
+            'status',
+            'disponivel'
+        )->get();
+
+        $leitores = Leitor::all();
+
+        return Inertia::render(
+            'Locacao/CadastrarLocacao',
+            [
+                'livros' => $livros,
+                'leitores' => $leitores
+            ]
+        );
     }
 
     public function salvarLocacao(Request $request)
