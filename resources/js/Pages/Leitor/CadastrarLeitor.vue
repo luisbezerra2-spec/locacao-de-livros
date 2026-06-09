@@ -3,17 +3,17 @@ import { useForm, router } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 
 defineOptions({
-layout: AppLayout
+    layout: AppLayout
 })
+
 const form = useForm({
-    titulo: '',
-    categoria: '',
-    autor: '',
-    status: 'Disponível'
+    nome: '',
+    documento: '',
+    endereco: ''
 })
 
 const submit = () => {
-    form.post('/salvarLivro', {
+    form.post('/salvarLeitor', {
         onSuccess: () => {
             form.reset()
         }
@@ -31,11 +31,11 @@ const cancelar = () => {
         <!-- Cabeçalho -->
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-800">
-                Cadastro de Livro
+                Cadastro de Leitor
             </h1>
 
             <p class="text-gray-500 mt-2">
-                Adicione um novo livro ao acervo.
+                Adicione um novo leitor ao sistema.
             </p>
         </div>
 
@@ -47,88 +47,67 @@ const cancelar = () => {
 
             <div class="space-y-6">
 
-                <!-- Título -->
+                <!-- Nome -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                        Título
+                        Nome
                     </label>
 
                     <input
-                        v-model="form.titulo"
+                        v-model="form.nome"
                         type="text"
-                        placeholder="Digite o título do livro"
+                        placeholder="Digite o nome do leitor"
                         class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+
+                    <p
+                        v-if="form.errors.nome"
+                        class="text-red-500 text-sm mt-1"
+                    >
+                        {{ form.errors.nome }}
+                    </p>
                 </div>
 
-                <!-- Autor -->
+                <!-- Documento -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                        Autor
+                        Documento (CPF/RG)
                     </label>
 
                     <input
-                        v-model="form.autor"
+                        v-model="form.documento"
                         type="text"
-                        placeholder="Digite o autor"
+                        placeholder="Digite o CPF ou RG"
                         class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+
+                    <p
+                        v-if="form.errors.documento"
+                        class="text-red-500 text-sm mt-1"
+                    >
+                        {{ form.errors.documento }}
+                    </p>
                 </div>
 
-                <!-- Categoria -->
+                <!-- Endereço -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                        Categoria
+                        Endereço
                     </label>
 
-                    <select
-                        v-model="form.categoria"
+                    <input
+                        v-model="form.endereco"
+            
+                        placeholder="Digite o endereço completo"
                         class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    ></input>
+
+                    <p
+                        v-if="form.errors.endereco"
+                        class="text-red-500 text-sm mt-1"
                     >
-                        <option value="">
-                            Selecione uma categoria
-                        </option>
-
-                        <option value="Romance">
-                            Romance
-                        </option>
-
-                        <option value="Ficção">
-                            Ficção
-                        </option>
-
-                        <option value="Tecnologia">
-                            Tecnologia
-                        </option>
-
-                        <option value="História">
-                            História
-                        </option>
-
-                        <option value="Educação">
-                            Educação
-                        </option>
-                    </select>
-                </div>
-
-                <!-- Status -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                        Status
-                    </label>
-
-                    <select
-                        v-model="form.status"
-                        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                        <option value="Disponível">
-                            Disponível
-                        </option>
-
-                        <option value="Indisponível">
-                            Indisponível
-                        </option>
-                    </select>
+                        {{ form.errors.endereco }}
+                    </p>
                 </div>
 
             </div>
@@ -147,9 +126,9 @@ const cancelar = () => {
                 <button
                     type="submit"
                     :disabled="form.processing"
-                    class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                    class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
                 >
-                    Salvar Livro
+                    Salvar Leitor
                 </button>
 
             </div>

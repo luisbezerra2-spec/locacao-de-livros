@@ -24,7 +24,7 @@ class LocacaoController extends Controller
     {
         $livros = Livro::where(
             'status',
-            'disponivel'
+            'Disponível'
         )->get();
 
         $leitores = Leitor::all();
@@ -40,16 +40,20 @@ class LocacaoController extends Controller
 
     public function salvarLocacao(Request $request)
     {
+        /*   dd([
+              'request' => $request->all(),
+              'livro' => Livro::find($request->livro_id)
+          ]); */
         $dadosValidados = $request->validate([
+            'leitor_id' => 'required',
             'livro_id' => 'required',
-            'leitor_id' => 'required'
         ]);
 
         // Recuperar livro
         $livro = Livro::findOrFail($request->livro_id);
 
         // Verificar disponibilidade REAL
-        if ($livro->status !== 'disponivel') {
+        if ($livro->status !== 'Disponível') {
 
             return redirect()
                 ->route('cadastrarLocacao')
@@ -57,17 +61,17 @@ class LocacaoController extends Controller
         }
 
         // Criar locação
-        Locacao::create([
-            'livro_id' => $request->livro_id,
+        $locacao = Locacao::create([
             'leitor_id' => $request->leitor_id,
+            'livro_id' => $request->livro_id,
             'data_retirada' => now(),
             'data_devolucao' => null
         ]);
-
+        /*  dd($locacao); */
         // Atualizar status do livro
-        $livro->status = 'alugado';
+        $livro->status = 'Alugado';
         $livro->save();
-
+        dd($livro->fresh());
         return redirect()
             ->route('listarLocacao')
             ->with('success', 'Locação cadastrada com sucesso!');
@@ -86,7 +90,7 @@ class LocacaoController extends Controller
         $locacao->save();
 
         // Atualizar status livro
-        $livro->status = 'disponivel';
+        $livro->status = 'Disponível';
         $livro->save();
 
         return redirect()

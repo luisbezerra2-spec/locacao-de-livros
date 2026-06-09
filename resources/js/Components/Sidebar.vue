@@ -25,17 +25,17 @@ const menuItems = [
     },
     {
         label: 'Livros',
-        href: '/livros',
+        href: '/listarLivro',
         icon: BookOpen
     },
     {
         label: 'Leitores',
-        href: '/leitores',
+        href: '/listarLeitor',
         icon: Users
     },
     {
         label: 'Locações',
-        href: '/locacoes',
+        href: '/listarLocacao',
         icon: FileText
     }
 ]
