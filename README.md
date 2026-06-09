@@ -9,6 +9,10 @@
 - php artisan serve
 - npm run dev
 
+> SEEDERS E FACTORIES:
+- php artisan migrate:fresh; (apaga dados do BD e executa as migrations novamente);
+- php artisan db:seed; (preenche o banco com dados da factory a partir do seed);
+
 > ESTRUTURA DE PASTAS VUE:
 Dashboard
 
