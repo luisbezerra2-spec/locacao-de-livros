@@ -138,7 +138,7 @@ layout: AppLayout
 
                 <div class="space-y-4">
 
-                    <Link href="/cadastrarLivro"
+                    <Link href="Livro/CadastrarLivro.vue"
                         class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all">
                         <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
                             <BookOpen class="w-6 h-6 text-blue-600" />
