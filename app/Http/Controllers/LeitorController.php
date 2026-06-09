@@ -36,7 +36,7 @@ class LeitorController extends Controller
     {
         $leitor = Leitor::findOrFail($id);
 
-        return Inertia::render('Livro/EditarLivro', ['leitor' => $leitor]);
+        return Inertia::render('Leitor/EditarLeitor', ['leitor' => $leitor]);
     }
 
     public function atualizarLeitor(Request $request, $id)
