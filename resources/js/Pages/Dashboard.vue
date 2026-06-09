@@ -138,7 +138,7 @@ layout: AppLayout
 
                 <div class="space-y-4">
 
-                    <Link href="Livro/CadastrarLivro.vue"
+                    <Link href="cadastrarLivro"
                         class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all">
                         <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
                             <BookOpen class="w-6 h-6 text-blue-600" />
@@ -157,7 +157,7 @@ layout: AppLayout
                         <Plus class="ml-auto w-5 h-5 text-gray-400" />
                     </Link>
 
-                    <Link href="/leitores/create"
+                    <Link href="cadastrarLeitor"
                         class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-green-500 hover:bg-green-50 transition-all">
                         <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center">
                             <Users class="w-6 h-6 text-green-600" />
@@ -176,7 +176,7 @@ layout: AppLayout
                         <Plus class="ml-auto w-5 h-5 text-gray-400" />
                     </Link>
 
-                    <Link href="/locacoes/create"
+                    <Link href="cadastrarLocacao"
                         class="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-purple-500 hover:bg-purple-50 transition-all">
                         <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center">
                             <FileText class="w-6 h-6 text-purple-600" />
