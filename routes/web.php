@@ -29,6 +29,7 @@ Route::delete('deletarLeitor/{id}', [LeitorController::class, 'deletarLeitor'])-
 Route::get('cadastrarLocacao', [LocacaoController::class, 'cadastrarLocacao'])->name('cadastrarLocacao');
 Route::post('salvarLocacao', [LocacaoController::class, 'salvarLocacao'])->name('salvarLocacao');
 Route::get('listarLocacao', [LocacaoController::class, 'mostrarLocacao'])->name('listarLocacao');
+Route::delete('finalizarLocacao/{id}', [LocacaoController::class, 'finalizarLocacao'])->name('finalizarLocacao');
 
 Route::get('livrosPorLeitor/{id}', [RelatorioController::class, 'livrosPorLeitor'])->name('livrosPorLeitor');
 
