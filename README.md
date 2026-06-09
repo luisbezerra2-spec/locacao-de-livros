@@ -7,6 +7,29 @@
 - configurar banco (.ENV)
 - php artisan migrate
 - php artisan serve
+- npm run dev
+
+> ESTRUTURA DE PASTAS VUE:
+Dashboard
+
+Livro/
+- ListarLivro
+- CadastrarLivro
+- EditarLivro
+
+Leitor/
+- ListarLeitor
+- CadastrarLeitor
+- EditarLeitor
+- HistoricoLeitor
+
+Locacao/
+- ListarLocacao
+- CadastrarLocacao
+
+Relatorio/
+- LivroPorLeitor
+
 
 > DESCRIÇÃO GERAL:
 
