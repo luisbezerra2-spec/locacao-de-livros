@@ -13,28 +13,20 @@ class LocacaoController extends Controller
 
     public function mostrarLocacao()
     {
-        // carregar relacionamentos
-        $locacoes = Locacao::with(['livro', 'leitor'])->get();
+        $locacoes = Locacao::with(['livro', 'leitor'])->whereNull('data_devolucao')->get();
 
         return Inertia::render('Locacao/ListarLocacao', ['locacoes' => $locacoes]);
     }
 
-    // Antes de criar a locacao, verificar o status de livro - se nao estiver disponivel, retornar erro e, ao criar a locação, mudar status para alugado. Ao finalizar a locação, mudar status para disponivel.
     public function cadastrarLocacao()
     {
-        $livros = Livro::where(
-            'status',
-            'Disponível'
-        )->get();
+        $livros = Livro::where('status', 'Disponível')->get();
 
         $leitores = Leitor::all();
 
         return Inertia::render(
             'Locacao/CadastrarLocacao',
-            [
-                'livros' => $livros,
-                'leitores' => $leitores
-            ]
+            ['livros' => $livros, 'leitores' => $leitores]
         );
     }
 
@@ -46,7 +38,7 @@ class LocacaoController extends Controller
         ]);
 
         // Recuperar livro
-        $livro = Livro::findOrFail($request->livro_id);
+        $livro = Livro::findOrFail($dadosValidados['livro_id']);
 
         // Verificar disponibilidade REAL
         if ($livro->status !== 'Disponível') {
