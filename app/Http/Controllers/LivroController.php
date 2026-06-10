@@ -18,11 +18,20 @@ class LivroController extends Controller
     // Colocado no 'Action' do 'Form' de 'cadastrarLivro' - retorna para pagina de cadastro.
     public function salvarLivro(Request $request)
     {
+        $request->validate([
+            'titulo' => 'required',
+            'autor' => 'required',
+            'categoria' => 'required',
+            'status' => 'required'
+        ]);
+
         $livro = new Livro();
+
         $livro->titulo = $request->titulo;
         $livro->autor = $request->autor;
         $livro->categoria = $request->categoria;
         $livro->status = $request->status;
+
         $livro->save();
 
         return redirect()->route('listarLivro')->with('success', 'Livro cadastrado com sucesso!');
@@ -31,6 +40,7 @@ class LivroController extends Controller
     public function mostrarLivro()
     {
         $livros = Livro::all();
+
         return Inertia::render('Livro/ListarLivro', ['livros' => $livros]);
     }
 
@@ -43,7 +53,8 @@ class LivroController extends Controller
 
     public function atualizarLivro(Request $request, $id)
     {
-        $dadosValidados = $request->validate([
+        $dadosValidados = $request
+        ->validate([
             'titulo' => 'required',
             'autor' => 'required',
             'categoria' => 'required',

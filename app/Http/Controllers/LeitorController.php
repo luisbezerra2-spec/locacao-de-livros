@@ -15,10 +15,17 @@ class LeitorController extends Controller
 
     public function salvarLeitor(Request $request)
     {
+        $request->validate([
+            'nome'      => 'required',
+            'documento' => 'required',
+            'endereco'  => 'required'
+        ]);
+
         $leitor = new Leitor();
         $leitor->nome = $request->nome;
         $leitor->documento = $request->documento;
         $leitor->endereco = $request->endereco;
+
         $leitor->save();
 
         return redirect()->route('listarLeitor')->with('success', 'Leitor cadastrado com sucesso!');
@@ -27,9 +34,8 @@ class LeitorController extends Controller
     public function mostrarLeitor()
     {
         $leitores = Leitor::all();
-        return Inertia::render('Leitor/ListarLeitor', [
-            'leitores' => $leitores
-        ]);
+
+        return Inertia::render('Leitor/ListarLeitor', ['leitores' => $leitores]);
     }
 
     public function editarLeitor($id)
@@ -41,7 +47,8 @@ class LeitorController extends Controller
 
     public function atualizarLeitor(Request $request, $id)
     {
-        $dadosValidados = $request->validate([
+        $dadosValidados = $request
+        ->validate([
             'nome'      => 'required',
             'documento' => 'required',
             'endereco'  => 'required'

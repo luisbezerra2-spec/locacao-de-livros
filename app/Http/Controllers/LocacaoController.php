@@ -32,7 +32,8 @@ class LocacaoController extends Controller
 
     public function salvarLocacao(Request $request)
     {
-        $dadosValidados = $request->validate([
+        $dadosValidados = $request
+        ->validate([
             'leitor_id' => 'required',
             'livro_id' => 'required',
         ]);
@@ -55,11 +56,10 @@ class LocacaoController extends Controller
             'data_retirada' => now(),
             'data_devolucao' => null
         ]);
-   
         // Atualizar status do livro
         $livro->status = 'Alugado';
         $livro->save();
-       
+        dd($livro->fresh());
         return redirect()
             ->route('listarLocacao')
             ->with('success', 'Locação cadastrada com sucesso!');

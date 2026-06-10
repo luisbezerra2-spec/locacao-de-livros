@@ -10,9 +10,9 @@ class RelatorioController extends Controller
     public function livrosPorLeitor($id)
     {
         //leitores -> locacoes -> livro
-        $leitores = Leitor::with(['locacoes.livro'])->findOrfail($id);
+        $leitor = Leitor::with(['locacoes.livro'])->findOrfail($id);
 
         //livros cadastrados por leitor;
-        return Inertia::render('Relatorio/LivroPorLeitor', ['leitores' => $leitores]);
+        return Inertia::render('Relatorio/LivroPorLeitor', ['leitor' => $leitor]);
     }
 }
