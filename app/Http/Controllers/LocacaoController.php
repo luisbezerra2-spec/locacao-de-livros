@@ -50,7 +50,7 @@ class LocacaoController extends Controller
         }
 
         // Criar locação
-        $locacao = Locacao::create([
+        Locacao::create([
             'leitor_id' => $request->leitor_id,
             'livro_id' => $request->livro_id,
             'data_retirada' => now(),

@@ -9,10 +9,16 @@ defineOptions({
 defineProps({
     locacoes: Array
 })
-
+const submit = () => {
+    form.post('/salvarLivro', {
+        onSuccess: () => {
+            form.reset()
+        }
+    })
+}
 const devolverLivro = (id) => {
     if (confirm('Confirmar devolução do livro?')) {
-        router.put(`/locacoes/${id}/devolver`)
+        router.delete(`/finalizarLocacao/${id}`)
     }
 }
 </script>
