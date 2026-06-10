@@ -32,7 +32,8 @@ class LocacaoController extends Controller
 
     public function salvarLocacao(Request $request)
     {
-        $dadosValidados = $request->validate([
+        $dadosValidados = $request
+        ->validate([
             'leitor_id' => 'required',
             'livro_id' => 'required',
         ]);
