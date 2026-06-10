@@ -127,6 +127,12 @@ const leitoresFiltrados = computed(() => {
                             >
                                 Excluir
                             </button>
+                            <button
+                                class="text-green-600 hover:underline ml-4"
+                                @click="$inertia.visit(`/historicoLeitor/${leitor.id}`)"
+                            >
+                                Histórico
+                            </button>
                         </td>
                     </tr>
 

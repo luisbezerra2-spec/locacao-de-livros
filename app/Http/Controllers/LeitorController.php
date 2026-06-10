@@ -79,4 +79,11 @@ class LeitorController extends Controller
             ->route('listarLeitor')
             ->with('success', 'Leitor excluído com sucesso!');
     }
+
+    public function historicoLeitor($id)
+    {
+        $leitor = Leitor::with('locacoes.livro')->findOrFail($id);
+
+        return Inertia::render('Leitor/HistoricoLeitor', ['leitor' => $leitor]);
+    }
 }
