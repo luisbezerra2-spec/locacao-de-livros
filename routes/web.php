@@ -31,5 +31,5 @@ Route::post('salvarLocacao', [LocacaoController::class, 'salvarLocacao'])->name(
 Route::get('listarLocacao', [LocacaoController::class, 'mostrarLocacao'])->name('listarLocacao');
 Route::delete('finalizarLocacao/{id}', [LocacaoController::class, 'finalizarLocacao'])->name('finalizarLocacao');
 
-Route::get('livrosPorLeitor/{id}', [RelatorioController::class, 'livrosPorLeitor'])->name('livrosPorLeitor');
+Route::get('livrosPorLeitor', [RelatorioController::class, 'livrosPorLeitor'])->name('livrosPorLeitor');
 
