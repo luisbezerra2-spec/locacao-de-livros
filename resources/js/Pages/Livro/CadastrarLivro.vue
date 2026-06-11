@@ -52,6 +52,12 @@ const cancelar = () => {
 
                     <input v-model="form.titulo" type="text" placeholder="Digite o título do livro"
                         class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+                    <p>
+                        <span v-if="form.errors.titulo" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.titulo }}
+                        </span>
+                    </p>
                 </div>
 
                 <!-- Autor -->
@@ -62,6 +68,11 @@ const cancelar = () => {
 
                     <input v-model="form.autor" type="text" placeholder="Digite o autor"
                         class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <p>
+                        <span v-if="form.errors.autor" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.autor }}
+                        </span>
+                    </p>
                 </div>
 
                 <!-- Categoria -->
@@ -96,6 +107,11 @@ const cancelar = () => {
                             Educação
                         </option>
                     </select>
+                    <p>
+                        <span v-if="form.errors.categoria" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.categoria }}
+                        </span>
+                    </p>
                 </div>
 
                 <!-- Status -->
@@ -110,6 +126,11 @@ const cancelar = () => {
                             Disponível
                         </option>
                     </select>
+                    <p>
+                        <span v-if="form.errors.status" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.status }}
+                        </span>
+                    </p>
                 </div>
 
             </div>

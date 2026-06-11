@@ -34,8 +34,8 @@ class LocacaoController extends Controller
     {
         $dadosValidados = $request
         ->validate([
-            'leitor_id' => 'required',
-            'livro_id' => 'required',
+            'leitor_id' => 'required|exists:leitores,id',
+            'livro_id' => 'required|exists:livros,id',
         ]);
 
         // Recuperar livro

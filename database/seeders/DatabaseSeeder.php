@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Livro;
 use App\Models\Leitor;
+use App\Models\Locacao;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,8 +18,29 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        Livro::factory(20)->create();
+        Livro::factory(40)->create();
 
-        Leitor::factory(10)->create();
+        Leitor::factory(20)->create();
+
+        $livros = Livro::all();
+
+        foreach ($livros->take(15) as $livro) {
+
+            Locacao::create([
+
+                'livro_id' => $livro->id,
+
+                'leitor_id' => Leitor::inRandomOrder()->first()->id,
+
+                'data_retirada' => fake()->dateTimeBetween('-6 months', 'now'),
+
+                'data_devolucao' => null
+
+            ]);
+
+            $livro->update([
+                'status' => 'Alugado'
+            ]);
+        }
     }
 }

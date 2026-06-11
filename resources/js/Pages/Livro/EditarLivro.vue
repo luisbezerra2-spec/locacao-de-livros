@@ -35,19 +35,40 @@ const cancelar = () => {
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Título</label>
                     <input v-model="form.titulo" type="text" class="w-full rounded-lg border border-gray-300 px-4 py-3">
+                    <p>
+                        <span v-if="form.errors.titulo" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.titulo }}
+                        </span>
+                    </p>
+
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Autor</label>
                     <input v-model="form.autor" type="text" class="w-full rounded-lg border border-gray-300  px-4 py-3">
+                    <p>
+                        <span v-if="form.errors.autor" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.autor }}
+                        </span>
+                    </p>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Categoria</label>
                     <input v-model="form.categoria" type="text"
                         class="w-full rounded-lg border border-gray-300  px-4 py-3">
+                    <p>
+                        <span v-if="form.errors.categoria" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.categoria }}
+                        </span>
+                    </p>
                 </div>
-                <div>   
+                <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
                     <input v-model="form.status" type="text" class="w-full rounded-lg border border-gray-300 px-4 py-3">
+                    <p>
+                        <span v-if="form.errors.status" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.status }}
+                        </span>
+                    </p>
                 </div>
 
                 <div class="flex justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
