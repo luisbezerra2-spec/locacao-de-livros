@@ -37,6 +37,11 @@ const menuItems = [
         label: 'Locações',
         href: '/listarLocacao',
         icon: FileText
+    },
+    {
+        label: 'Relatório',
+        href: '/livrosPorLeitor',
+        icon: FileText
     }
 ]
 

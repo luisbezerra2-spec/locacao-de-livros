@@ -123,6 +123,12 @@ const deletarLeitor = (id) => {
                             class="text-red-600 hover:underline">
                                 Excluir
                             </button>
+
+                            <button @click="$inertia.visit('/historicoLeitor/' + leitor.id)"
+                                class="text-green-600 hover:underline ml-4"
+                            >
+                                Histórico
+                            </button>
                         </td>
                     </tr>
 

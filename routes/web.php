@@ -25,11 +25,12 @@ Route::get('listarLeitor', [LeitorController::class, 'mostrarLeitor'])->name('li
 Route::get('editarLeitor/{id}', [LeitorController::class, 'editarLeitor'])->name('editarLeitor');
 Route::put('atualizarLeitor/{id}', [LeitorController::class, 'atualizarLeitor'])->name('atualizarLeitor');
 Route::delete('deletarLeitor/{id}', [LeitorController::class, 'deletarLeitor'])->name('deletarLeitor');
+Route::get('historicoLeitor/{id}', [LeitorController::class, 'historicoLeitor'])->name('historicoLeitor');
 
 Route::get('cadastrarLocacao', [LocacaoController::class, 'cadastrarLocacao'])->name('cadastrarLocacao');
 Route::post('salvarLocacao', [LocacaoController::class, 'salvarLocacao'])->name('salvarLocacao');
 Route::get('listarLocacao', [LocacaoController::class, 'mostrarLocacao'])->name('listarLocacao');
 Route::delete('finalizarLocacao/{id}', [LocacaoController::class, 'finalizarLocacao'])->name('finalizarLocacao');
 
-Route::get('livrosPorLeitor/{id}', [RelatorioController::class, 'livrosPorLeitor'])->name('livrosPorLeitor');
+Route::get('livrosPorLeitor', [RelatorioController::class, 'livrosPorLeitor'])->name('livrosPorLeitor');
 
