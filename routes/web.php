@@ -9,7 +9,6 @@ use App\Http\Controllers\LocacaoController;
 use App\Http\Controllers\PrincipalController;
 
 Route::get('/', [PrincipalController::class, 'index'])->name('dashboard');
-Route::get('/relatorio', [PrincipalController::class, 'relatorio'])->name('relatorio');
 
 Route::get('cadastrarLivro', [LivroController::class, 'cadastrarLivro'])->name('cadastrarLivro');
 Route::post('salvarLivro', [LivroController::class, 'salvarLivro'])->name('salvarLivro');

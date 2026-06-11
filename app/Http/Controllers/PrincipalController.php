@@ -5,25 +5,31 @@ use Inertia\Inertia;
 use App\Models\Livro;
 use App\Models\Leitor;
 use App\Models\Locacao;
-
+use Illuminate\Support\Facades\DB;
 class PrincipalController extends Controller
 {
-    public function index()
-    {
-        return Inertia::render('Dashboard');
-    }
 
     // relatorio: total de livros, leitores cadastrados, locações ativas
-    public function relatorio()
-    {
-        $totalLivros = Livro::count();
-        $totalLeitores = Leitor::count();
-        $locacoesAtivas = Locacao::whereNull('data_devolucao')->count();
+public function index()
+{
+    $totalLivros = Livro::count();
+    $totalLeitores = Leitor::count();
+    $locacoesAtivas = Locacao::whereNull('data_devolucao')->count();
 
-        return Inertia::render('Dashboard', [
-            'totalLivros' => $totalLivros,
-            'totalLeitores' => $totalLeitores,
-            'locacoesAtivas' => $locacoesAtivas
-        ]);
-    }
+    $locacoesPorMes = Locacao::select(
+        DB::raw('MONTH(data_retirada) as mes'),
+        DB::raw('COUNT(*) as total')
+    )
+    ->whereYear('data_retirada', now()->year)
+    ->groupBy('mes')
+    ->orderBy('mes')
+    ->get();
+
+    return Inertia::render('Dashboard', [
+        'totalLivros' => $totalLivros,
+        'totalLeitores' => $totalLeitores,
+        'locacoesAtivas' => $locacoesAtivas,
+        'locacoesPorMes' => $locacoesPorMes
+    ]);
+}
 }

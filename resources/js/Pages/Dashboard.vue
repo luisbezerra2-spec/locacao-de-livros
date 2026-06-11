@@ -6,19 +6,54 @@ import {
     AlertTriangle
 } from 'lucide-vue-next'
 import { Link } from '@inertiajs/vue3'
-
+import { onMounted, ref } from 'vue'
+import Chart from 'chart.js/auto'   
 
 import AppLayout from '@/Layouts/AppLayout.vue'
 
 defineOptions({
     layout: AppLayout
 })
+
+const props = defineProps({
+    totalLivros: Number,
+    totalLeitores: Number,
+    locacoesAtivas: Number,
+    locacoesPorMes: Array
+})
+
+const chartCanvas = ref(null)
+
+onMounted(() => {
+    const labels = [
+        'Jan', 'Fev', 'Mar', 'Abr',
+        'Mai', 'Jun', 'Jul', 'Ago',
+        'Set', 'Out', 'Nov', 'Dez'
+    ]
+
+    const dados = Array(12).fill(0)
+
+    props.locacoesPorMes.forEach(item => {
+        dados[item.mes - 1] = item.total
+    })
+
+    new Chart(chartCanvas.value, {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Locações',
+                data: dados
+            }]
+        }
+    })
+})
 </script>
 
 
 <template>
-    <div class="space-y-6">
 
+    <div class="space-y-6">
         <!-- Cabeçalho -->
         <div>
             <h1 class="text-3xl font-bold text-gray-800">
@@ -41,7 +76,7 @@ defineOptions({
                         </p>
 
                         <h2 class="text-3xl font-bold mt-2">
-                            1.248
+                            {{ totalLivros }}
                         </h2>
                     </div>
 
@@ -57,7 +92,7 @@ defineOptions({
                         </p>
 
                         <h2 class="text-3xl font-bold mt-2">
-                            325
+                            {{ totalLeitores }}
                         </h2>
                     </div>
 
@@ -73,7 +108,8 @@ defineOptions({
                         </p>
 
                         <h2 class="text-3xl font-bold mt-2">
-                            87
+
+                            {{ totalLocacoes > 0 ? totalLocacoes : 0 }}
                         </h2>
                     </div>
 
@@ -81,21 +117,7 @@ defineOptions({
                 </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-sm p-6 border">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-500 text-sm">
-                            Atrasos
-                        </p>
 
-                        <h2 class="text-3xl font-bold mt-2">
-                            12
-                        </h2>
-                    </div>
-
-                    <AlertTriangle class="w-10 h-10 text-red-600" />
-                </div>
-            </div>
 
         </div>
 
@@ -125,7 +147,7 @@ defineOptions({
 
                 <!-- Seu gráfico entra aqui -->
                 <div class="h-80 flex items-center justify-center text-gray-400">
-                    Área do gráfico
+                    <canvas ref="chartCanvas"></canvas>
                 </div>
 
             </div>
