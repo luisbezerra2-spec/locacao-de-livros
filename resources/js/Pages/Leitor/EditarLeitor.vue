@@ -17,11 +17,11 @@ const form = useForm({
 })
 
 const submit = () => {
-    form.put(`/leitores/${props.leitor.id}`)
+    form.put(`/atualizarLeitor/${props.leitor.id}`)
 }
 
 const cancelar = () => {
-    router.visit('/ListarLeitor')
+    router.visit('/listarLeitor')
 }
 </script>
 
@@ -107,25 +107,25 @@ const cancelar = () => {
 
             </div>
 
-            <div class="flex justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
+                <div class="flex justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
 
-                <button
-                    type="button"
-                    @click="cancelar"
-                    class="px-5 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50"
-                >
-                    Cancelar
-                </button>
+                    <button
+                        type="button"
+                        @click="cancelar"
+                        class="px-5 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer    "
+                    >
+                        Cancelar
+                    </button>
 
-                <button
-                    type="submit"
-                    :disabled="form.processing"
-                    class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-                >
-                    Salvar Alterações
-                </button>
+                    <button
+                        type="submit"
+                        :disabled="form.processing"
+                        class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 cursor-pointer"
+                    >
+                        Salvar Alterações
+                    </button>
 
-            </div>
+                </div>
 
         </form>
 

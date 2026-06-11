@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
-
+import { router } from '@inertiajs/vue3'
 defineOptions({
     layout: AppLayout
 })
@@ -19,6 +19,13 @@ const leitoresFiltrados = computed(() => {
         )
     )
 })
+
+const deletarLeitor = (id) => {
+    if (confirm('Tem certeza que deseja excluir este leitor?')) {
+        router.delete(`/deletarLeitor/${id}`)
+    }
+}
+
 </script>
 
 <template>
@@ -36,10 +43,8 @@ const leitoresFiltrados = computed(() => {
                 </p>
             </div>
 
-            <button
-                class="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700"
-                @click="$inertia.visit('/cadastrarLeitor')"
-            >
+            <button class="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700"
+                @click="$inertia.visit('/cadastrarLeitor')">
                 + Novo Leitor
             </button>
         </div>
@@ -62,12 +67,8 @@ const leitoresFiltrados = computed(() => {
         <!-- Pesquisa -->
         <div class="bg-white rounded-xl border shadow-sm p-6 mb-6">
 
-            <input
-                v-model="pesquisa"
-                type="text"
-                placeholder="Pesquisar leitor pelo nome..."
-                class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <input v-model="pesquisa" type="text" placeholder="Pesquisar leitor pelo nome..."
+                class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
 
         </div>
 
@@ -98,11 +99,7 @@ const leitoresFiltrados = computed(() => {
 
                 <tbody>
 
-                    <tr
-                        v-for="leitor in leitoresFiltrados"
-                        :key="leitor.id"
-                        class="border-t hover:bg-gray-50"
-                    >
+                    <tr v-for="leitor in leitoresFiltrados" :key="leitor.id" class="border-t hover:bg-gray-50">
                         <td class="px-6 py-4">
                             {{ leitor.nome }}
                         </td>
@@ -116,15 +113,14 @@ const leitoresFiltrados = computed(() => {
                         </td>
 
                         <td class="px-6 py-4 text-center">
-                            <button
-                                class="text-blue-600 hover:underline mr-4"
-                            >
+                            <button @click="$inertia.visit(`/editarLeitor/${leitor.id}`)"
+                                class="text-blue-600 hover:underline mr-4">
                                 Editar
                             </button>
 
-                            <button
-                                class="text-red-600 hover:underline"
-                            >
+                            <button 
+                            @click="deletarLeitor(leitor.id)"
+                            class="text-red-600 hover:underline">
                                 Excluir
                             </button>
 
@@ -137,10 +133,7 @@ const leitoresFiltrados = computed(() => {
                     </tr>
 
                     <tr v-if="leitoresFiltrados.length === 0">
-                        <td
-                            colspan="4"
-                            class="text-center py-8 text-gray-500"
-                        >
+                        <td colspan="4" class="text-center py-8 text-gray-500">
                             Nenhum leitor encontrado.
                         </td>
                     </tr>

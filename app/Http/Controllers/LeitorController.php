@@ -66,7 +66,7 @@ class LeitorController extends Controller
     public function deletarLeitor($id)
     {
         $leitor = Leitor::findOrFail($id);
-
+        
         if ($leitor->locacoes()->exists()) {
             return redirect()
                 ->route('listarLeitor')

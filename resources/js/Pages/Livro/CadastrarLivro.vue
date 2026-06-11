@@ -3,7 +3,7 @@ import { useForm, router } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 
 defineOptions({
-layout: AppLayout
+    layout: AppLayout
 })
 const form = useForm({
     titulo: '',
@@ -40,10 +40,7 @@ const cancelar = () => {
         </div>
 
         <!-- Formulário -->
-        <form
-            @submit.prevent="submit"
-            class="bg-white rounded-xl border border-gray-200 shadow-sm p-8"
-        >
+        <form @submit.prevent="submit" class="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
 
             <div class="space-y-6">
 
@@ -53,12 +50,8 @@ const cancelar = () => {
                         Título
                     </label>
 
-                    <input
-                        v-model="form.titulo"
-                        type="text"
-                        placeholder="Digite o título do livro"
-                        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    <input v-model="form.titulo" type="text" placeholder="Digite o título do livro"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
 
                 <!-- Autor -->
@@ -67,12 +60,8 @@ const cancelar = () => {
                         Autor
                     </label>
 
-                    <input
-                        v-model="form.autor"
-                        type="text"
-                        placeholder="Digite o autor"
-                        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    <input v-model="form.autor" type="text" placeholder="Digite o autor"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
 
                 <!-- Categoria -->
@@ -81,10 +70,8 @@ const cancelar = () => {
                         Categoria
                     </label>
 
-                    <select
-                        v-model="form.categoria"
-                        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
+                    <select v-model="form.categoria"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">
                             Selecione uma categoria
                         </option>
@@ -117,16 +104,10 @@ const cancelar = () => {
                         Status
                     </label>
 
-                    <select
-                        v-model="form.status"
-                        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
+                    <select v-model="form.status"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="Disponível">
                             Disponível
-                        </option>
-
-                        <option value="Indisponível">
-                            Indisponível
                         </option>
                     </select>
                 </div>
@@ -136,19 +117,13 @@ const cancelar = () => {
             <!-- Botões -->
             <div class="flex justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
 
-                <button
-                    type="button"
-                    @click="cancelar"
-                    class="px-5 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50"
-                >
+                <button type="button" @click="cancelar"
+                    class="px-5 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50">
                     Cancelar
                 </button>
 
-                <button
-                    type="submit"
-                    :disabled="form.processing"
-                    class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-                >
+                <button type="submit" :disabled="form.processing"
+                    class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
                     Salvar Livro
                 </button>
 
