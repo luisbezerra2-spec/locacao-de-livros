@@ -114,19 +114,19 @@ const deletarLeitor = (id) => {
 
                         <td class="px-6 py-4 text-center">
                             <button @click="$inertia.visit(`/editarLeitor/${leitor.id}`)"
-                                class="text-blue-600 hover:underline mr-4">
+                                class="text-blue-600 hover:underline mr-4 cursor-pointer">
                                 Editar
                             </button>
 
                             <button 
                             @click="deletarLeitor(leitor.id)"
-                            class="text-red-600 hover:underline">
+                            class="text-red-600 hover:underline cursor-pointer">
                                 Excluir
                             </button>
 
                             <button @click="$inertia.visit('/historicoLeitor/' + leitor.id)"
-                                class="text-green-600 hover:underline ml-4"
-                            >
+                                class="text-green-600 hover:underline ml-4 cursor-pointer">
+                            
                                 Histórico
                             </button>
                         </td>

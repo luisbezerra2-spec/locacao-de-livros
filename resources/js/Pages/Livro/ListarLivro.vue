@@ -11,6 +11,15 @@ defineProps({
 const editarLivro = (id) => {
     router.visit(`/editarLivro/${id}`);
 }
+
+const deletarLivro = (id) => {
+    if (confirm('Tem certeza que deseja excluir este livro?')) {
+        router.delete(`/deletarLivro/${id}`);
+    }
+}
+
+
+
 </script>
 
 <template>
@@ -119,11 +128,12 @@ const editarLivro = (id) => {
 
                         <td class="px-6 py-4 text-center">
 
-                            <button @click="editarLivro(livro.id)" class="text-blue-600 hover:underline mr-4 cursor-pointer">
+                            <button @click="editarLivro(livro.id)"
+                                class="text-blue-600 hover:underline mr-4 cursor-pointer">
                                 Editar
                             </button>
 
-                            <button class="text-red-600 hover:underline cursor-pointer">
+                            <button @click="deletarLivro(livro.id)" class="text-red-600 hover:underline cursor-pointer">
                                 Excluir
                             </button>
 

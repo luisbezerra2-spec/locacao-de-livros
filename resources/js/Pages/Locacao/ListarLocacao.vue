@@ -40,10 +40,8 @@ const devolverLivro = (id) => {
                 </p>
             </div>
 
-            <button
-                @click="$inertia.visit('/cadastrarLocacao')"
-                class="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700"
-            >
+            <button @click="$inertia.visit('/cadastrarLocacao')"
+                class="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700 cursor-pointer">
                 Nova Locação
             </button>
 
@@ -128,11 +126,7 @@ const devolverLivro = (id) => {
 
                 <tbody>
 
-                    <tr
-                        v-for="locacao in locacoes"
-                        :key="locacao.id"
-                        class="border-t hover:bg-gray-50"
-                    >
+                    <tr v-for="locacao in locacoes" :key="locacao.id" class="border-t hover:bg-gray-50">
 
                         <td class="px-6 py-4">
                             {{ locacao.leitor.nome }}
@@ -155,17 +149,12 @@ const devolverLivro = (id) => {
 
                         <td class="px-6 py-4">
 
-                            <span
-                                v-if="locacao.data_devolucao"
-                                class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm"
-                            >
+                            <span v-if="locacao.data_devolucao"
+                                class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">
                                 Devolvido
                             </span>
 
-                            <span
-                                v-else
-                                class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm"
-                            >
+                            <span v-else class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">
                                 Em andamento
                             </span>
 
@@ -173,11 +162,8 @@ const devolverLivro = (id) => {
 
                         <td class="px-6 py-4 text-center">
 
-                            <button
-                                v-if="!locacao.data_devolucao"
-                                @click="devolverLivro(locacao.id)"
-                                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
-                            >
+                            <button v-if="!locacao.data_devolucao" @click="devolverLivro(locacao.id)"
+                                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 cursor-pointer">
                                 Devolver
                             </button>
 
@@ -187,10 +173,7 @@ const devolverLivro = (id) => {
 
                     <tr v-if="locacoes.length === 0">
 
-                        <td
-                            colspan="6"
-                            class="text-center py-8 text-gray-500"
-                        >
+                        <td colspan="6" class="text-center py-8 text-gray-500">
                             Nenhuma locação encontrada.
                         </td>
 
