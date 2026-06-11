@@ -59,7 +59,7 @@ class LocacaoController extends Controller
         // Atualizar status do livro
         $livro->status = 'Alugado';
         $livro->save();
-        dd($livro->fresh());
+        
         return redirect()
             ->route('listarLocacao')
             ->with('success', 'Locação cadastrada com sucesso!');

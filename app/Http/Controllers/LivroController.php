@@ -53,6 +53,7 @@ class LivroController extends Controller
 
     public function atualizarLivro(Request $request, $id)
     {
+
         $dadosValidados = $request
         ->validate([
             'titulo' => 'required',
@@ -62,7 +63,6 @@ class LivroController extends Controller
         ]);
 
         $livro = Livro::findOrFail($id);
-
         $livro->update($dadosValidados);
 
         return redirect()

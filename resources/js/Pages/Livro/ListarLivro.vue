@@ -1,12 +1,16 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
-
+import { router } from '@inertiajs/vue3'
 defineOptions({
     layout: AppLayout
 })
 defineProps({
     livros: Array
 })
+
+const editarLivro = (id) => {
+    router.visit(`/editarLivro/${id}`);
+}
 </script>
 
 <template>
@@ -105,8 +109,8 @@ defineProps({
                         <td class="px-6 py-4">
 
                             <span class="px-3 py-1 rounded-full text-sm" :class="livro.status === 'Disponível'
-                                    ? 'bg-green-100 text-green-700'
-                                    : 'bg-red-100 text-red-700'
+                                ? 'bg-green-100 text-green-700'
+                                : 'bg-red-100 text-red-700'
                                 ">
                                 {{ livro.status }}
                             </span>
@@ -115,11 +119,11 @@ defineProps({
 
                         <td class="px-6 py-4 text-center">
 
-                            <button class="text-blue-600 hover:underline mr-4">
+                            <button @click="editarLivro(livro.id)" class="text-blue-600 hover:underline mr-4 cursor-pointer">
                                 Editar
                             </button>
 
-                            <button class="text-red-600 hover:underline">
+                            <button class="text-red-600 hover:underline cursor-pointer">
                                 Excluir
                             </button>
 
