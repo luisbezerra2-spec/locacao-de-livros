@@ -74,20 +74,6 @@ const devolverLivro = (id) => {
                 </h2>
             </div>
 
-            <div class="bg-white border rounded-xl p-6 shadow-sm">
-                <p class="text-gray-500 text-sm">
-                    Devolvidas
-                </p>
-
-                <h2 class="text-3xl font-bold text-green-600 mt-2">
-                    {{
-                        locacoes.filter(
-                            l => l.data_devolucao !== null
-                        ).length
-                    }}
-                </h2>
-            </div>
-
         </div>
 
         <!-- Tabela -->

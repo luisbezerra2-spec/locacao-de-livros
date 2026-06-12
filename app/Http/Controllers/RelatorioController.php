@@ -13,7 +13,7 @@ class RelatorioController extends Controller
     {
         $leitores = Leitor::withCount('locacoes')
             ->with(['locacoes.livro'])
-            ->get();
+            ->paginate(5);
 
         return Inertia::render(
             'Relatorio/LivrosPorLeitor',

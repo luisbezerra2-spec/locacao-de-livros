@@ -40,9 +40,37 @@ const cancelar = () => {
                             {{ form.errors.titulo }}
                         </span>
                     </p>
-
                 </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Autor</label>
+                <input v-model="form.autor" type="text" class="w-full rounded-lg border border-gray-300  px-4 py-3">
+                <p>
+                    <span v-if="form.errors.autor" class="text-red-500 text-sm mt-1">
+                        {{ form.errors.autor }}
+                    </span>
+                </p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Categoria</label>
+                <select v-model="form.categoria" class="w-full rounded-lg border border-gray-300 px-4 py-3">
+                    <option value="História">História</option>
+                    <option value="Tecnologia">Tecnologia</option>
+                    <option value="Ficção">Ficção</option>
+                    <option value="Educação">Educação</option>
+                    <option value="Romance">Romance</option>
+                </select>
+                <p>
+                    <span v-if="form.errors.categoria" class="text-red-500 text-sm mt-1">
+                        {{ form.errors.categoria }}
+                    </span>
+                </p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                <p>{{ form.status }}</p>
                 <div>
+<<<<<<< HEAD
                     <label class="block text-sm font-medium text-gray-700 mb-2">Autor</label>
                     <input v-model="form.autor" type="text" class="w-full rounded-lg border border-gray-300  px-4 py-3">
                     <p>
@@ -65,6 +93,9 @@ const cancelar = () => {
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
                     <input v-model="form.status" type="text" class="w-full rounded-lg border border-gray-300 px-4 py-3">
+=======
+   
+>>>>>>> 936b9aa49731c31745289fd6e137e03fe61d1a34
                     <p>
                         <span v-if="form.errors.status" class="text-red-500 text-sm mt-1">
                             {{ form.errors.status }}
