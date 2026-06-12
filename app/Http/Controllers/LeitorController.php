@@ -16,9 +16,9 @@ class LeitorController extends Controller
     public function salvarLeitor(Request $request)
     {
         $request->validate([
-            'nome'      => 'required',
-            'documento' => 'required',
-            'endereco'  => 'required'
+            'nome'      => 'required|string|min:3|max:255',
+            'documento' => 'required|string|min:3|max:20',
+            'endereco'  => 'required|string|min:3|max:255'
         ]);
 
         $leitor = new Leitor();
@@ -49,9 +49,9 @@ class LeitorController extends Controller
     {
         $dadosValidados = $request
         ->validate([
-            'nome'      => 'required',
-            'documento' => 'required',
-            'endereco'  => 'required'
+            'nome'      => 'required|string|min:3|max:255',
+            'documento' => 'required|string|min:3|max:20',
+            'endereco'  => 'required|string|min:3|max:255'
         ]);
 
         $leitor = Leitor::findOrFail($id);

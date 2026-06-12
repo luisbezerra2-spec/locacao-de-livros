@@ -19,10 +19,10 @@ class LivroController extends Controller
     public function salvarLivro(Request $request)
     {
         $request->validate([
-            'titulo' => 'required',
-            'autor' => 'required',
-            'categoria' => 'required',
-            'status' => 'required'
+            'titulo' => 'required|string|min:3|max:255',
+            'autor' => 'required|string|min:3|max:255',
+            'categoria' => 'required|in:História,Tecnologia,Ficção,Educação,Romance',
+            'status' => 'required|in:Disponível,Alugado'
         ]);
 
         $livro = new Livro();
@@ -55,10 +55,10 @@ class LivroController extends Controller
     {
         $dadosValidados = $request
         ->validate([
-            'titulo' => 'required',
-            'autor' => 'required',
-            'categoria' => 'required',
-            'status' => 'required'
+            'titulo' => 'required|string|min:3|max:255',
+            'autor' => 'required|string|min:3|max:255',
+            'categoria' => 'required|in:História,Tecnologia,Ficção,Educação,Romance',
+            'status' => 'required|in:Disponível,Alugado'
         ]);
 
         $livro = Livro::findOrFail($id);
@@ -67,7 +67,7 @@ class LivroController extends Controller
 
         return redirect()
             ->route('listarLivro')
-            ->with('success', 'Livro cadastrado com sucesso!');
+            ->with('success', 'Livro atualizado com sucesso!');
     }
 
     public function deletarLivro($id)
@@ -84,6 +84,6 @@ class LivroController extends Controller
 
         return redirect()
             ->route('listarLivro')
-            ->with('erro', 'Livro excluído com sucesso!');
+            ->with('success', 'Livro excluído com sucesso!');
     }
 }
