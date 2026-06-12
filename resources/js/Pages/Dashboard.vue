@@ -109,7 +109,7 @@ onMounted(() => {
 
                         <h2 class="text-3xl font-bold mt-2">
 
-                            {{ totalLocacoes > 0 ? totalLocacoes : 0 }}
+                            {{ locacoesAtivas > 0 ? locacoesAtivas : 0 }}
                         </h2>
                     </div>
 

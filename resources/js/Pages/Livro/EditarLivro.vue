@@ -45,9 +45,11 @@ const cancelar = () => {
                     <input v-model="form.categoria" type="text"
                         class="w-full rounded-lg border border-gray-300  px-4 py-3">
                 </div>
-                <div>   
+                <div class="hidden">   
                     <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                    <input v-model="form.status" type="text" class="w-full rounded-lg border border-gray-300 px-4 py-3">
+                    <select v-model="form.status" class="w-full rounded-lg border border-gray-300 px-4 py-3">
+                        <option value="disponivel">Disponível</option>
+                    </select>
                 </div>
 
                 <div class="flex justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
