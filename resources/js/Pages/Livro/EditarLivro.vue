@@ -62,12 +62,6 @@ const cancelar = () => {
                     </p>
                 </div>
 <<<<<<< HEAD
-                <div class="hidden">   
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                    <select v-model="form.status" class="w-full rounded-lg border border-gray-300 px-4 py-3">
-                        <option value="disponivel">Disponível</option>
-                    </select>
-=======
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
                     <input v-model="form.status" type="text" class="w-full rounded-lg border border-gray-300 px-4 py-3">
@@ -76,7 +70,6 @@ const cancelar = () => {
                             {{ form.errors.status }}
                         </span>
                     </p>
->>>>>>> fe9e62303f3df6cf6458926c5ff3bcf9e45f5615
                 </div>
 
                 <div class="flex justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
